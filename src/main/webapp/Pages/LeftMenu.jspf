@@ -4,7 +4,7 @@
     <li><a href="#" onclick="window.location.href='Expense.jsp'">Add</a></li>
     <li><a href="#" onclick="window.location.href='View.jsp'">View</a></li>
     <li data-role="list-divider">Groups</li>
-    <li><a href="#">Add</a></li>
-    <li><a href="#">View</a></li>
+    <li><a href="#" onclick="window.location.href='View.jsp?action=Group'">Add</a></li>
+    <li><a href="#" onclick="window.location.href='View.jsp?action=Group'">View</a></li>
     </ul>
 </div>
