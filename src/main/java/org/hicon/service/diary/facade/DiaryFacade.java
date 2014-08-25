@@ -138,8 +138,11 @@ public class DiaryFacade {
                 }
 
             } else {
+            if (!"Deleted".equals((String) entity.getProperty("Desc"))) {
+
+
                 results.add(new SingleGroupResponseType(entity));
-            }
+            }}
         }
         response.setList(results);
         return response;
@@ -175,15 +178,17 @@ public class DiaryFacade {
         response.setStatus(true);
         return response;
     }
-    public DeleteGroupResponseType DeleteFromGroup(DeleteGroupRequestType listDiaryData) throws InstantiationException, IllegalAccessException {
+    public DeleteGroupResponseType DeleteFromGroup(DeleteGroupRequestType deleteGroupData) throws InstantiationException, IllegalAccessException {
         DeleteGroupResponseType response = BeanFactory.getDeleteGroupResponse();
-        Query query = new Query("Group");
-        query.addFilter("GroupId", FilterOperator.EQUAL, listDiaryData.getGroupId());
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        Query query = new Query("Group");
+        query.addFilter("GroupId", FilterOperator.EQUAL, deleteGroupData.getGroupId());
         PreparedQuery pq = datastore.prepare(query);
         Entity diary = pq.asSingleEntity();
-        datastore.delete(diary.getKey());
+        diary.setProperty("Desc", "Deleted");
+        datastore.put(diary);
         response.setStatus(true);
+
         return response;
     }
 
