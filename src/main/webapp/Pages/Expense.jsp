@@ -1,20 +1,17 @@
- <html>
-
+<html>
 <head>
     <title>Add Expense</title>
-      <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Cache-Control" content="no-store" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
-  <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.js"></script>
     <script src="../JS/XMLGenerate.js"></script>
-      <script src="../JS/Cookies.js"></script>
-  <script src="../JS/Expense.js"></script>
-  
+    <script src="../JS/Cookies.js"></script>
+    <script src="../JS/Expense.js"></script>  
 </head>
-
 <body>
     <div data-role="page">
         <%@include file="LeftMenu.jspf" %><!-- /panel -->
@@ -52,10 +49,10 @@
                     <label for="price"><em>* </em>Price:</label>
                     <input type="text" id="price" name="price" data-theme="d" placeholder="Enter Price" />
                 </div>
-                <div data-role="fieldcontain">
+                  <div data-role="fieldcontain" <%if("Edit".equals(request.getParameter("action"))){ %> style="display:none"<%}%>>
                     <label for="group">Group:</label>
                     <select name="group" id="group">
-                        <option value="1">All</option>
+                        
                     </select>
                 </div>
               <%}
